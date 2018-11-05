@@ -4,7 +4,7 @@
 *	Purpose: Pull budget values from an accesible Google spreadsheet
 */
 
-var spreadSheetKey = "1YhPxkHUORR4DYXsYvyedH2oDcIfcIPks8Mw2Bg9sj30";
+var spreadSheetKey = "INSERT_SPREADSHEET_KEY_HERE";
 
 function main() {
   var MTDCost;
@@ -53,18 +53,18 @@ function getSpreadsheetBudget () {
   
   // Access spreadsheet
   var ss = SpreadsheetApp.openById(spreadSheetKey);
-  var s = ss.getSheetByName("All Client KPIs");
+  var s = ss.getSheetByName("SHEET_NAME_IN_BOTTOM_LEFT");  // Change name to sheet being read
   s.activate();
   
-  // Budget in column 14 of spreadsheet
+  // Budget in column 14 for HT KPI, 3 for normal KPI
   
-  for(var i = 1; i < s.getLastRow(); i++) {
+  for(var i = 1; i <= s.getLastRow(); i++) {
     getBudgetRange = s.getRange(i, 1);
   	sheetAccountName = getBudgetRange.getDisplayValue();
     
     // If account is found in spreadsheet
     if(sheetAccountName.equals(adwordsAccountName)) {
-      getSpreadsheetBudget = s.getRange(i, 14); // Get budget
+      getSpreadsheetBudget = s.getRange(i, 3); // INSERT BUDGET COLUMN IN 2ND ARGUMENT
       value = getSpreadsheetBudget.getDisplayValue();
       normalValue = normalizeNumber(value); // Remove '$' and ','
       accountFoundSuccess = true;
@@ -74,14 +74,9 @@ function getSpreadsheetBudget () {
   
   // Email if account not found in spreadsheet
   if(accountFoundSuccess == false) {
-    // FINISHME: email AM
+    // Email account manager
     MailApp.sendEmail('ppcmanager1000@gmail.com', AdWordsApp.currentAccount().getName() + ' not found in Spreadsheet.', 'See subject line.');
   }
-  
-  /* Testing
-  Logger.log("Original Value: " + value + "\n");
-  Logger.log("Value after normalization: " + newValue);
-  */
   
   return normalValue;
 } // end getSpreadsheetBudget
@@ -109,4 +104,3 @@ function getMTDCost () {
   }
   return MTDCost;
 } // end getMTDCost
-    
