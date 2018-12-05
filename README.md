@@ -3,8 +3,9 @@
 Change all **bold** snippets as directed
 
 Line 7 - Change to form's key
+```javascript
 > var spreadSheetKey = "**INSERT_SPREADSHEET_KEY_HERE**";
-
+```
 Line 19 - Can alter number for how much you want to be under the actual budget (since the script can only run hourly).
 > safeBudget = spreadsheetBudget - **20**;
 
