@@ -32,8 +32,7 @@ function main() {
     } 
   } // end if
   if(campaignsPaused == true) {
-    //FINISHME: Email AM
-    MailApp.sendEmail('ppcmanager1000@gmail.com', AdWordsApp.currentAccount().getName() + ' monthly budget met, all campaigns paused.', 'See subject line.');
+    MailApp.sendEmail('changeMe@example.com', AdWordsApp.currentAccount().getName() + ' monthly budget met, all campaigns paused.', 'See subject line.');
   }
 }
 
@@ -75,7 +74,7 @@ function getSpreadsheetBudget () {
   // Email if account not found in spreadsheet
   if(accountFoundSuccess == false) {
     // Email account manager
-    MailApp.sendEmail('ppcmanager1000@gmail.com', AdWordsApp.currentAccount().getName() + ' not found in Spreadsheet.', 'See subject line.');
+    MailApp.sendEmail('changeMe@example.com', AdWordsApp.currentAccount().getName() + ' not found in Spreadsheet.', 'See subject line.');
   }
   
   return normalValue;
