@@ -24,3 +24,4 @@ Line 77 - Change example email(s)
 
 > MailApp.sendEmail('**changeMe@example.com**', AdWordsApp.currentAccount().getName() + ' not found in Spreadsheet.', 'See subject line.');
 
+Set to run hourly.
